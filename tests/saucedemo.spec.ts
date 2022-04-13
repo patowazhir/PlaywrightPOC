@@ -15,6 +15,8 @@ test.beforeEach(async ({ page }) => {
 
 test.describe('User can add Items to the cart', () => {
 
+	// TODO: Add custom messages to the assertions https://playwright.dev/docs/test-assertions#custom-expect-message
+
 	test.beforeEach(async ({}) => {
 		// Handle Login as part of test setup as this is not the functionality we are testing in this item.
 		// TODO: Obfuscate password, maybe with the use of Environment Variables.
@@ -41,5 +43,36 @@ test.describe('User can add Items to the cart', () => {
 
 		// Validate qty value of our item in the cart
 		await expect(await cartPO.getCartItemQty(itemToTest)).toBe(1);
+	});
+
+	test('User can add multiple items to the cart', async () => {
+		const itemsToTest = ['Sauce Labs Backpack', 'Sauce Labs Bike Light', 'Sauce Labs Onesie'];
+
+		// Note, Loops in tests are arguably bad practice as they can be a pain to debug, but this shows how powerful they can be.
+		for (const item of itemsToTest) {
+			await test.step(`Add item "${item}" to cart`, async () => {
+				// Add the item into the Cart
+				await inventoryPO.addToCart(item);
+
+				// Validate item's button text has correctly updated
+				await inventoryPO.isItemAddedToCart(item);
+			});
+		}
+
+		// Validate Item count on Cart button gets updated 
+		await expect(await inventoryPO.getCartItemsCounter()).toBe(itemsToTest.length);
+	
+		// Go into the cart page
+		await inventoryPO.goToCart();
+	
+		// Validate total number of items in the cart
+		await expect(await cartPO.getCartItemsCount()).toBe(itemsToTest.length);
+
+		// Validate qty value of our items in the cart
+		for (const item of itemsToTest) {
+			await test.step(`Validate qty of item "${item}" in cart`, async () => {
+				await expect(await cartPO.getCartItemQty(item)).toBe(1);
+			});
+		}
 	});
 });

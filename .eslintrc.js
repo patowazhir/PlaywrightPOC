@@ -6,10 +6,10 @@ module.exports = {
   },
   extends: ['eslint:recommended'],
   parser: '@typescript-eslint/parser',
+  ignorePatterns: ['*.json', '*.html'], // We need to add some validation for JSON files
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
-    project: ['./tsconfig.json'], // Specify t only for TypeScript files
   },
   plugins: ['@typescript-eslint'],
   rules: {

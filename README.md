@@ -1,6 +1,6 @@
 # Plawright POC
 
-[![Playwright Tests](https://github.com/patowazhir/PlaywrightPOC/actions/workflows/playwright.yml/badge.svg?branch=master&event=status)](https://github.com/patowazhir/PlaywrightPOC/actions/workflows/playwright.yml)
+[![Playwright Tests](https://github.com/patowazhir/PlaywrightPOC/actions/workflows/playwright.yml/badge.svg)](https://github.com/patowazhir/PlaywrightPOC/actions/workflows/playwright.yml)
 
 Set of tests for https://www.saucedemo.com/ using Playwright as a POC for friendly interviewers :)
 

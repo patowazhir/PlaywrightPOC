@@ -51,7 +51,7 @@ export class InventoryPO {
 	 * If the count can't be retrieved, an error will be thrown.
 	 * @returns the current item counter of the Cart button.
 	 */
-	async getCartItemsCount(): Promise<number> {
+	async getCartItemsCounter(): Promise<number> {
 		const textContent = await this.goToCartBtn.locator('.shopping_cart_badge').textContent();
 
 		// TODO: Handle scenario where the Cart Button has no counter (empty cart)

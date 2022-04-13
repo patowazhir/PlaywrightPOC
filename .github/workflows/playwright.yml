@@ -15,8 +15,10 @@ jobs:
           node-version: "14.x"
       - name: Install dependencies
         run: npm ci
-      - name: Lint check
-        run: npx eslint "./**"
+      - name: Lint check Page Objects
+        run: npx eslint "./pages/**"
+      - name: Lint check Tests
+        run: npx eslint "./tests/**"
       - name: Install Playwright
         run: npx playwright install --with-deps
       - name: Run Playwright tests

@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
-import { CartPO } from '../pages/login/cart.po';
-import { InventoryPO } from '../pages/login/inventory.po';
-import { LoginPO } from '../pages/login/login.po';
+import { CartPO } from '../pages/cart.po';
+import { InventoryPO } from '../pages/inventory.po';
+import { LoginPO } from '../pages/login.po';
 
 let loginPO: LoginPO;
 let cartPO: CartPO;

@@ -62,4 +62,26 @@ export class InventoryPO {
 			throw Error('Couldn\'t obtain the number of items in the cart!');
 		}
 	}
+
+	/**
+	 * Checks the text of the Add to Cart button for the desired item to verify if the item was added or not into the cart.
+	 * @param itemName name of the desired item
+	 * @returns a boolean expressing if the item is already added to the cart or not.
+	 * @example
+	 * If it returns true, item is added to the cart (button's text == REMOVE), else, it is still displaying the "Add to Cart" text.
+	 */
+	async isItemAddedToCart(itemName: string): Promise<boolean> {
+		const itemContainer = await this.getItemContainer(itemName);
+		const addToCartBtnText = await itemContainer.locator('button').textContent();
+
+		switch (addToCartBtnText) {
+		case 'Add to cart':
+			return false;
+		case 'Remove':
+			return true;
+		default:
+			throw Error(`Couldn't obtain the text for the add to cart button for item "${itemName}"`);
+		}
+
+	}
 }

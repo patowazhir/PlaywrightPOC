@@ -45,3 +45,4 @@ Disclaimer: _I haven't tested the installation process from scratch. Steps may b
 - Add validations and checks for non TS files
 - Add unit tests maybe?
 - **Fix the test status badge**
+- Add branch security
